@@ -32,6 +32,8 @@ set cmdheight=1
 " Поиск
 set incsearch
 set hlsearch
+set ignorecase
+set smartcase
 set wrapscan
 set cursorline
 
