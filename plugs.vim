@@ -42,6 +42,16 @@ call plug#end()
 " Расширения для coc.nvim
 let g:coc_global_extensions = ['coc-json', 'coc-snippets', 'coc-explorer', 'coc-emmet', 'coc-htmlhint', 'coc-css', 'coc-tsserver', 'coc-git', 'coc-eslint']
 
+" Проверяем наличие линтеров в ./node_modules и добавляем соответствующие
+" плагины в coc.nvim
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
+
 " Конфигурация coc.nvim
 
 " Используем Tab для автодополнения
@@ -186,85 +196,3 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-" Mappings for CoCList
-
-" Guten-tags
-
-" Путь для тегов
-let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')
-
-" Исключения для тегов
-let g:gutentags_ctags_exclude = [
-      \ '*.git', '*.svg', '*.hg',
-      \ '*/tests/*',
-      \ 'build',
-      \ 'dist',
-      \ '*sites/*/files/*',
-      \ 'bin',
-      \ 'node_modules',
-      \ 'bower_components',
-      \ 'cache',
-      \ 'compiled',
-      \ 'docs',
-      \ 'example',
-      \ 'bundle',
-      \ 'vendor',
-      \ '*.md',
-      \ '*-lock.json',
-      \ '*.lock',
-      \ '*bundle*.js',
-      \ '*build*.js',
-      \ '.*rc*',
-      \ '*.json',
-      \ '*.min.*',
-      \ '*.map',
-      \ '*.bak',
-      \ '*.zip',
-      \ '*.pyc',
-      \ '*.class',
-      \ '*.sln',
-      \ '*.Master',
-      \ '*.csproj',
-      \ '*.tmp',
-      \ '*.csproj.user',
-      \ '*.cache',
-      \ '*.pdb',
-      \ 'tags*',
-      \ 'cscope.*',
-      \ '*.css',
-      \ '*.less',
-      \ '*.scss',
-      \ '*.exe', '*.dll',
-      \ '*.mp3', '*.ogg', '*.flac',
-      \ '*.swp', '*.swo',
-      \ '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png',
-      \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
-      \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
-      \ ]
-
-let g:tagbar_type_typescript = {
-    \ 'ctagstype': 'typescript',
-    \ 'kinds': [
-      \ 'c:class',
-      \ 'n:namespace',
-      \ 'f:function',
-      \ 'G:generator',
-      \ 'v:variable',
-      \ 'm:method',
-      \ 'p:property',
-      \ 'i:interface',
-      \ 'g:enum',
-      \ 't:type',
-      \ 'a:alias',
-    \ ],
-    \'sro': '.',
-      \ 'kind2scope' : {
-      \ 'c' : 'class',
-      \ 'n' : 'namespace',
-      \ 'i' : 'interface',
-      \ 'f' : 'function',
-      \ 'G' : 'generator',
-      \ 'm' : 'method',
-      \ 'p' : 'property',
-      \},
-  \ }
