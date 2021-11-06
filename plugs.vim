@@ -21,6 +21,15 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Быстрый поиск
 Plug 'kien/ctrlp.vim'
 
+" Стартовый экран
+Plug 'mhinz/vim-startify'
+
+" Поддержка синтаксиса
+Plug 'sheerun/vim-polyglot'
+
+" Поддержка комментариев
+Plug 'tpope/vim-commentary'
+
 " Теги
 "Plug 'ludovicchabant/vim-gutentags'
 "Plug 'preservim/tagbar'
@@ -28,7 +37,7 @@ Plug 'kien/ctrlp.vim'
 call plug#end()
 
 " Расширения для coc.nvim
-let g:coc_global_extensions = ['coc-json', 'coc-snippets', 'coc-explorer', 'coc-emmet', 'coc-htmlhint', 'coc-css', 'coc-tsserver', 'coc-git']
+let g:coc_global_extensions = ['coc-json', 'coc-snippets', 'coc-explorer', 'coc-emmet', 'coc-htmlhint', 'coc-css', 'coc-tsserver', 'coc-git', 'coc-eslint']
 
 " Конфигурация coc.nvim
 

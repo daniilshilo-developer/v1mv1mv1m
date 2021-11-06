@@ -3,11 +3,21 @@
 " Кнопка для альтернативных хоткеев
 let mapleader=";"
 
+" [search] Убрать выделение после поиска
+nnoremap <C-l> :nohlsearch<CR>
+
+" [tabs] Табы
+nnoremap <leader>tt :tabnew<CR>
+nnoremap <leader>tw :tabclose<CR>
+
 " [ctrlp] Открыть поиск файлов
 let g:ctrlp_map = '<leader>p'
 
+" [ctrlp] Открыть недавние файлы
+nnoremap <leader>r :CtrlPMRUFiles<CR>
+
 " [coc] Открыть проводник
-:nmap <leader>e <Cmd>CocCommand explorer<CR>
+nmap <leader>e <Cmd>CocCommand explorer<CR>
 
 " [coc] Показать проблемы в файле
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
