@@ -1,6 +1,8 @@
 # Конфигурация Neovim, которую я взращивал годы
 
-<p align="center">![vim_](/assets/screen.png)</p>
+<p align="center">
+    <img src="https://github.com/daniilshilo-developer/vimvimvim/blob/master/assets/screen.png?raw=true" alt="Logo"/>
+</p>
 
 Данный репозиторий предназначен для моей конфигурации NeoVim, которую я писал и улучшал годы используя данный редактор.
 
