@@ -34,6 +34,9 @@ Plug 'tpope/vim-commentary'
 "Plug 'ludovicchabant/vim-gutentags'
 "Plug 'preservim/tagbar'
 
+" Табы
+Plug 'xuxinx/vim-tabline'
+
 call plug#end()
 
 " Расширения для coc.nvim
