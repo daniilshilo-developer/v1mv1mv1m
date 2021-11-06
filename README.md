@@ -71,3 +71,197 @@
 |               | `m + <любой символ>` | Поставить закладку |
 |               | `' + <любой символ>` | Перейти к закладке |
 
+# Настройка терминала
+Помимо для того чтобы использовать (Neo)Vim эффективно вам нужно ещё и настроить терминал. Я предпочитаю следующий стек:
+
+* XTerm
+* Tmux
+* Zsh
+
+Данный стек даёт нам возможность работать быстро и не нагружать мозги перегруженным интерфейсом. Файлы конфигурации я не буду закидывать в сам репозиторий, а просто приведу здесь ниже:
+
+## XTerm
+```Xresources
+! Google Dark Theme
+! special
+*.foreground:   #c5c8c6
+*.background:   #1d1f21
+*.cursorColor:  #c5c8c6
+
+! black
+*.color0:       #1d1f21
+*.color8:       #969896
+
+! red
+*.color1:       #cc342b
+*.color9:       #cc342b
+
+! green
+*.color2:       #198844
+*.color10:      #198844
+
+! yellow
+*.color3:       #fba922
+*.color11:      #fba922
+
+! blue
+*.color4:       #3971ed
+*.color12:      #3971ed
+
+! magenta
+*.color5:       #a36ac7
+*.color13:      #a36ac7
+
+! cyan
+*.color6:       #3971ed
+*.color14:      #3971ed
+
+! white
+*.color7:       #c5c8c6
+*.color15:      #ffffff
+
+! Поддержка 256-цветов
+XTerm.termName: xterm-256color
+
+! UTF-8
+XTerm.vt100.locale: false
+XTerm.vt100.utf8: true
+
+! Alt ведёт себя как в других терминалах
+XTerm.vt100.metaSendsEscape: true
+
+! Backspace ведёт себя как в других терминалах
+XTerm.vt100.backarrowKey: false
+XTerm.ttyModes: erase ^?
+
+! Копирование и вставка как в других терминалах
+Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+
+! Сохранение истории для скролла
+XTerm.vt100.saveLines: 16784
+
+! Скрывается скроллбар
+XTerm.vt100.scrollBar: false
+XTerm.vt100.scrollbar.width: 0
+
+! Установка шрифтов
+xterm*faceName: SF Mono
+xterm*faceSize: 11
+
+! Копирование при выделении текста
+XTerm*selectToClipboard: true
+```
+
+## Zsh
+```bash
+# Путь к oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
+
+# Установка темы
+ZSH_THEME="refined"
+
+# Формат запоминания даты touch'а
+HIST_STAMP="dd/mm/yyyy"
+
+# Включаем автокорректирование
+ENABLE_CORRECTION="true"
+
+# Плагины для oh-my-zsh
+plugins=(git docker zsh-syntax-highlighting zsh-autosuggestions sudo)
+
+# Загружаем oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+
+# Установка локали по умолчанию
+export LANG=en_US.UTF-8
+
+# Установка редактора по умолчанию
+export EDITOR="nvim"
+
+# Выполняем скрипт выхода из nnn для того чтобы переместиться в директорию
+if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
+    source /usr/share/nnn/quitcd/quitcd.bash_zsh
+fi
+
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Алиасы (сокращения)
+alias -g vim="nvim" # Заменяем vim на nvim глобально
+alias ls="ls --group-directories-first --color" # Сначало выводим директории, а затем файлы, всё цветное
+alias start="tmux -c nnn" # Стартуем tmux с включенным nnn (проводник)
+alias work="cd ~/Development"
+
+# Алиасы в виде букв :3
+alias -g y="yarn"
+alias -g n="npm"
+alias -g a="sudo apt"
+alias t="tmux"
+```
+
+## Tmux
+```tmux
+# Поставить дефолтный терминал
+set -g default-terminal "screen-256color"
+
+# Хоткеи XTerm
+setw -g xterm-keys on
+
+# Время для комбинации клавиш
+set -s escape-time 10
+set -sg repeat-time 10
+
+# Второй префикс
+set -g prefix2 C-a
+bind C-a send-prefix -2
+
+# Кодировка
+set -q -g status-utf8 on
+setw -q -g utf8 on
+
+# История
+set -g history-limit 5000
+
+# Нумерация
+# Нумеровать окна с 1
+set -g base-index 1
+
+# Пересчитывать окна при закрытии
+set -g renumber-windows on
+
+# Нумеровать панели с 1
+setw -g pane-base-index 1
+
+# Хоткеи
+# Хоткей для перезагрузки конфигурации
+bind r source-file ~/.tmux.conf \; display '~/.tmux.conf sourced'
+# Хоткей для изменения конфигурации
+bind e new-window -n "~/.tmux.conf" "EDITOR=\${EDITOR//nvim/vim} ~/.tmux.conf && tmux source ~/.tmux.conf && tmux display \"~/.tmux.conf sourced\""
+
+# Сплит панелей горизонтально
+bind _ split-window -v
+# Сплит панелей вертикально
+bind - split-window -h
+
+# Переключение между панелей
+bind -r j select-pane -D
+bind -r k select-pane -U
+bind -r h select-pane -L
+bind -r l select-pane -R
+# Переключение на следующую / предыдущую панель
+bind > swap-pane -D
+bind < swap-pane -U
+
+# Ресайз панелей
+bind -r H resize-pane -L 2
+bind -r J resize-pane -D 2
+bind -r K resize-pane -U 2
+bind -r L resize-pane -R 2
+
+# Копирование и вставка
+bind Enter copy-mode
+
+# Скрытие статуса
+bind-key h set -g status
+```
