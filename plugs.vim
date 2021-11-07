@@ -13,6 +13,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'sainnhe/sonokai'
 Plug 'KabbAmine/yowish.vim'
 Plug 'ayu-theme/ayu-vim'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 
 " Закрытие кавычек, скобок
 Plug 'jiangmiao/auto-pairs'
@@ -28,13 +29,10 @@ Plug 'mhinz/vim-startify'
 
 " Поддержка синтаксиса
 Plug 'sheerun/vim-polyglot'
+Plug 'HerringtonDarkholme/yats.vim'
 
 " Поддержка комментариев
 Plug 'tpope/vim-commentary'
-
-" Теги
-"Plug 'ludovicchabant/vim-gutentags'
-"Plug 'preservim/tagbar'
 
 " Табы
 Plug 'xuxinx/vim-tabline'
