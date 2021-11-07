@@ -59,7 +59,8 @@ set splitright
 
 " Показываем пробельные знаки
 set list
-set listchars=tab:→\ ,space:·,precedes:«,extends:»
+"set listchars=tab:→\ ,space:·,precedes:«,extends:»
+set listchars=tab:¦\ ,space:·,precedes:«,extends:»
 
 " Избавляемся от бэкапов
 set nobackup

@@ -23,6 +23,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Быстрый поиск
 Plug 'kien/ctrlp.vim'
+Plug 'mileszs/ack.vim'
 
 " Стартовый экран
 Plug 'mhinz/vim-startify'
@@ -196,3 +197,10 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
+" FZF
+
+" Прыгаем в существующий буфер, если такой есть
+let g:fzf_buffers_jump = 1
+
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', 'cat {}']}, <bang>0)

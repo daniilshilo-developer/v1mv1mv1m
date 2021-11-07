@@ -11,10 +11,13 @@ nnoremap <leader>tt :tabnew<CR>
 nnoremap <leader>tw :tabclose<CR>
 
 " [ctrlp] Открыть поиск файлов
-let g:ctrlp_map = '<leader>p'
+nnoremap <leader>p :CtrlPRoot<CR>
 
 " [ctrlp] Открыть недавние файлы
 nnoremap <leader>r :CtrlPMRUFiles<CR>
+
+" [ack] Поиск по файлам
+nnoremap <leader>f :Ack 
 
 " [coc] Открыть проводник
 nmap <leader>e <Cmd>CocCommand explorer<CR>
