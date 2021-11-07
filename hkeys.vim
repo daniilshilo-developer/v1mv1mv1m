@@ -17,7 +17,7 @@ nnoremap <leader>p :CtrlPRoot<CR>
 nnoremap <leader>r :CtrlPMRUFiles<CR>
 
 " [ack] Поиск по файлам
-nnoremap <leader>f :Ack 
+nnoremap <leader>f :Ack! 
 
 " [coc] Открыть проводник
 nmap <leader>e <Cmd>CocCommand explorer<CR>
