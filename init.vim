@@ -14,10 +14,11 @@ color sonokai
 set encoding=utf-8
 
 " Табы
-set autoindent
+set copyindent
+set preserveindent
 set noexpandtab
-set softtabstop =4
-set shiftwidth  =4
+set tabstop=2
+set softtabstop=0
 set shiftround
 
 " Фикс для Backspace
