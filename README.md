@@ -105,7 +105,10 @@ sudo dnf install zsh xterm neovim tmux
 Установка необходимых плагинов для Zsh:
 ```bash
 #zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
 #zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
 
 Данный стек даёт нам возможность работать быстро и не нагружать мозги перегруженным интерфейсом. Файлы конфигурации я не буду закидывать в сам репозиторий, а просто приведу здесь ниже:
