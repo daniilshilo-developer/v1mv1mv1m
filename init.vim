@@ -8,7 +8,13 @@ so ~/.config/nvim/hkeys.vim
 
 " Раскрасить синтаксис
 syntax on
-color sonokai
+if (has('nvim'))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+endif
+color yowish
+let g:yowish = {}
+let g:yowish.term_italic = 1
+let g:yowish.comment_italic = 1
 
 " Кодировка
 set encoding=utf-8
@@ -26,6 +32,10 @@ set backspace   =indent,eol,start
 
 " Переключение между буфферами без сохранения
 set hidden
+
+" Вложенность
+set foldmethod=syntax
+set foldlevel=99
 
 " Высота статуса
 set cmdheight=1
@@ -45,6 +55,10 @@ set lazyredraw
 " Правильное разделение окон
 set splitbelow
 set splitright
+
+" Показываем пробельные знаки
+set list
+set listchars=tab:→\ ,space:·,precedes:«,extends:»
 
 " Избавляемся от бэкапов
 set nobackup
