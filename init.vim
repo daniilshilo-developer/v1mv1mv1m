@@ -11,10 +11,8 @@ syntax on
 if (has('nvim'))
   let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 endif
-color yowish
-let g:yowish = {}
-let g:yowish.term_italic = 1
-let g:yowish.comment_italic = 1
+set termguicolors
+color ayu
 
 " Кодировка
 set encoding=utf-8

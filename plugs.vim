@@ -12,7 +12,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Тема
 Plug 'sainnhe/sonokai'
 Plug 'KabbAmine/yowish.vim'
-Plug 'kaicataldo/material.vim'
+Plug 'ayu-theme/ayu-vim'
 
 " Закрытие кавычек, скобок
 Plug 'jiangmiao/auto-pairs'
