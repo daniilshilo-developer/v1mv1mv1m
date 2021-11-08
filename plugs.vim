@@ -12,11 +12,13 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Тема
 Plug 'sainnhe/sonokai'
 Plug 'KabbAmine/yowish.vim'
-Plug 'ayu-theme/ayu-vim'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 
 " Закрытие кавычек, скобок
 Plug 'jiangmiao/auto-pairs'
+
+" Плавный скролл
+Plug 'psliwka/vim-smoothie'
 
 " Автодополнение
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -196,11 +198,3 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" FZF
-
-" Прыгаем в существующий буфер, если такой есть
-let g:fzf_buffers_jump = 1
-
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', 'cat {}']}, <bang>0)
