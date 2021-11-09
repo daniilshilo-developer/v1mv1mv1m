@@ -14,7 +14,7 @@ endif
 set termguicolors
 let g:material_theme_style = 'default-community'
 let g:material_terminal_italics = 1
-color material
+color skull
 
 " Кодировка
 set encoding=utf-8

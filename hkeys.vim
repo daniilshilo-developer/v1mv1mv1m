@@ -10,17 +10,11 @@ nnoremap <C-l> :nohlsearch<CR>
 nnoremap <leader>tt :tabnew<CR>
 nnoremap <leader>tw :tabclose<CR>
 
-" [ctrlp] Открыть поиск файлов
-nnoremap <leader>p :CtrlPRoot<CR>
+" [Grepper] Поиск по файлам
+nnoremap <leader>g :Grepper -tool rg<CR>
 
-" [ctrlp] Открыть недавние файлы
-nnoremap <leader>r :CtrlPMRUFiles<CR>
-
-" [ack] Поиск по файлам
-nnoremap <leader>f :Ack! 
-
-" [coc] Открыть проводник
-nmap <leader>e <Cmd>CocCommand explorer<CR>
+" [fzf] Показать проводник
+nnoremap <leader>p :FZF<CR>
 
 " [coc] Показать проблемы в файле
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
@@ -46,8 +40,8 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " [coc] Восстановить последний список
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-" [coc] Показать документацию
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+" [coc] Проводник
+nnoremap <silent><leader>e :CocCommand explorer --root-strategies workspace,custom:vcs,custom:vcs-r --position floating<CR>
 
 " [coc] Перейти к объявлению
 nmap <silent> gd <Plug>(coc-definition)
@@ -61,3 +55,5 @@ nmap <silent> gi <Plug>(coc-implementation)
 " [coc] Перейти к использованию
 nmap <silent> gr <Plug>(coc-references)
 
+" [coc] Переименовать переменную
+nmap <leader>rn <Plug>(coc-rename)

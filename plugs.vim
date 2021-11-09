@@ -11,8 +11,10 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " Тема
 Plug 'sainnhe/sonokai'
-Plug 'KabbAmine/yowish.vim'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'preservim/vim-colors-pencil'
+Plug 'kadekillary/skull-vim'
+
 
 " Закрытие кавычек, скобок
 Plug 'jiangmiao/auto-pairs'
@@ -24,15 +26,14 @@ Plug 'psliwka/vim-smoothie'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Быстрый поиск
-Plug 'kien/ctrlp.vim'
-Plug 'mileszs/ack.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'mhinz/vim-grepper'
 
 " Стартовый экран
 Plug 'mhinz/vim-startify'
 
 " Поддержка синтаксиса
 Plug 'sheerun/vim-polyglot'
-Plug 'HerringtonDarkholme/yats.vim'
 
 " Поддержка комментариев
 Plug 'tpope/vim-commentary'
@@ -43,7 +44,7 @@ Plug 'xuxinx/vim-tabline'
 call plug#end()
 
 " Расширения для coc.nvim
-let g:coc_global_extensions = ['coc-json', 'coc-snippets', 'coc-explorer', 'coc-emmet', 'coc-htmlhint', 'coc-css', 'coc-tsserver', 'coc-git', 'coc-eslint']
+let g:coc_global_extensions = ['coc-json', 'coc-explorer', 'coc-snippets', 'coc-emmet', 'coc-htmlhint', 'coc-css', 'coc-tsserver', 'coc-git', 'coc-eslint']
 
 " Проверяем наличие линтеров в ./node_modules и добавляем соответствующие
 " плагины в coc.nvim
@@ -120,6 +121,10 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+
+" [coc] Показать документацию
+nnoremap <silent>K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
