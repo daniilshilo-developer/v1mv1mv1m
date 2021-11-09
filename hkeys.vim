@@ -1,7 +1,7 @@
 " Файл для горячих клавиш
 
 " Кнопка для альтернативных хоткеев
-let mapleader=";"
+let mapleader=" "
 
 " [search] Убрать выделение после поиска
 nnoremap <C-l> :nohlsearch<CR>
@@ -17,28 +17,22 @@ nnoremap <leader>g :Grepper -tool rg<CR>
 nnoremap <leader>p :FZF<CR>
 
 " [coc] Показать проблемы в файле
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-
-" [coc] Показать расширения
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent><nowait> <leader>a  :<C-u>CocList diagnostics<cr>
 
 " [coc] Показать команды
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-
-" [coc] Хер его знает, что это
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <leader>c  :<C-u>CocList commands<cr>
 
 " [coc] Поиск по символам
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <leader>s  :<C-u>CocList -I symbols<cr>
 
 " [coc] Следующая проблема
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent><nowait> <leader>j  :<C-u>CocNext<CR>
+
+" [coc] Содержание файла
+nnoremap <silent><nowait> <leader>o  :<C-u>CocList outline<cr>
 
 " [coc] Предыдущая проблема
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-
-" [coc] Восстановить последний список
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <leader>k  :<C-u>CocPrev<CR>
 
 " [coc] Проводник
 nnoremap <silent><leader>e :CocCommand explorer --root-strategies workspace,custom:vcs,custom:vcs-r --position floating<CR>
