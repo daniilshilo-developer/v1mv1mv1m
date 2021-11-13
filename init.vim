@@ -14,7 +14,11 @@ endif
 set termguicolors
 let g:material_theme_style = 'default-community'
 let g:material_terminal_italics = 1
-color skull
+color pencil
+
+let g:lightline = {
+      \ 'colorscheme': 'sonokai',
+      \ }
 
 " Кодировка
 set encoding=utf-8
@@ -57,7 +61,7 @@ set splitbelow
 set splitright
 
 " Показываем пробельные знаки
-set list
+set nolist
 "set listchars=tab:→\ ,space:·,precedes:«,extends:»
 set listchars=tab:¦\ ,space:·,precedes:«,extends:»
 
@@ -67,3 +71,11 @@ set noswapfile
 
 " Используется системный буфер обмена
 set clipboard^=unnamedplus
+
+" Авто-перенос
+inoremap (; (<CR>);<C-c>O
+inoremap (, (<CR>),<C-c>O
+inoremap {; {<CR>};<C-c>O
+inoremap {, {<CR>},<C-c>O
+inoremap [; [<CR>];<C-c>O
+inoremap [, [<CR>],<C-c>O

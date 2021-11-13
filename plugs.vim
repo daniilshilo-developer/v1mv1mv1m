@@ -38,6 +38,9 @@ Plug 'sheerun/vim-polyglot'
 " Поддержка комментариев
 Plug 'tpope/vim-commentary'
 
+" Строка статуса
+Plug 'itchyny/lightline.vim'
+
 " Табы
 Plug 'xuxinx/vim-tabline'
 
