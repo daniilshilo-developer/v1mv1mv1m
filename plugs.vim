@@ -13,11 +13,10 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'sainnhe/sonokai'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'preservim/vim-colors-pencil'
-Plug 'kadekillary/skull-vim'
-
+Plug 'doums/darcula'
 
 " Закрытие кавычек, скобок
-Plug 'jiangmiao/auto-pairs'
+Plug 'tmsvg/pear-tree'
 
 " Плавный скролл
 Plug 'psliwka/vim-smoothie'
@@ -26,7 +25,7 @@ Plug 'psliwka/vim-smoothie'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Быстрый поиск
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mhinz/vim-grepper'
 
 " Стартовый экран

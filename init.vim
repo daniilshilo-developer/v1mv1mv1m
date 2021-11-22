@@ -14,10 +14,10 @@ endif
 set termguicolors
 let g:material_theme_style = 'default-community'
 let g:material_terminal_italics = 1
-color pencil
+color darcula
 
 let g:lightline = {
-      \ 'colorscheme': 'sonokai',
+      \ 'colorscheme': 'darculaOriginal',
       \ }
 
 " Кодировка
@@ -44,6 +44,9 @@ set foldlevel=99
 " Высота статуса
 set cmdheight=1
 
+" Фикс для скролла
+set scrolloff=5
+
 " Поиск
 set incsearch
 set hlsearch
@@ -60,9 +63,8 @@ set lazyredraw
 set splitbelow
 set splitright
 
-" Показываем пробельные знаки
+" Не показываем пробельные знаки
 set nolist
-"set listchars=tab:→\ ,space:·,precedes:«,extends:»
 set listchars=tab:¦\ ,space:·,precedes:«,extends:»
 
 " Избавляемся от бэкапов
@@ -72,10 +74,8 @@ set noswapfile
 " Используется системный буфер обмена
 set clipboard^=unnamedplus
 
-" Авто-перенос
-inoremap (; (<CR>);<C-c>O
-inoremap (, (<CR>),<C-c>O
-inoremap {; {<CR>};<C-c>O
-inoremap {, {<CR>},<C-c>O
-inoremap [; [<CR>];<C-c>O
-inoremap [, [<CR>],<C-c>O
+" Не добавляем новую линию в конце
+set nofixendofline
+
+" Убираем конкатенацию комментариев
+set formatoptions-=cro

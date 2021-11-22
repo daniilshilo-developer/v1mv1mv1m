@@ -14,3 +14,4 @@ touch ~/.config/nvim/{init,hkeys,plugs}.vim
 cp ./init.vim ~/.config/nvim
 cp ./plugs.vim ~/.config/nvim
 cp ./hkeys.vim ~/.config/nvim
+cp ./coc-settings.json ~/.config/nvim

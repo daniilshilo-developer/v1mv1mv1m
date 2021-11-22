@@ -13,8 +13,11 @@ nnoremap <leader>tw :tabclose<CR>
 " [Grepper] Поиск по файлам
 nnoremap <leader>g :Grepper -tool rg<CR>
 
-" [fzf] Показать проводник
-nnoremap <leader>p :FZF<CR>
+" [CtrlP] Показать проводник
+nnoremap <leader>p :CtrlP<CR>
+
+" [CtrlP] Показать недавние файлы
+nnoremap <leader>r :CtrlPMRUFiles<CR>
 
 " [coc] Показать проблемы в файле
 nnoremap <silent><nowait> <leader>a  :<C-u>CocList diagnostics<cr>
