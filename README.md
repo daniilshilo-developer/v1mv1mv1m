@@ -112,13 +112,13 @@
 
 Помимо для того чтобы использовать (Neo)Vim эффективно вам нужно ещё и настроить терминал. Я предпочитаю следующий стек:
 
-* XTerm
+* Alacritty
 * Tmux
 * Zsh
 
 ## Установка необходимого софта
 ```bash
-sudo dnf install zsh xterm neovim tmux
+sudo dnf install zsh alacritty neovim tmux
 ```
 
 Установка необходимых плагинов для Zsh:
@@ -132,77 +132,209 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 Данный стек даёт нам возможность работать быстро и не нагружать мозги перегруженным интерфейсом. Файлы конфигурации я не буду закидывать в сам репозиторий, а просто приведу здесь ниже:
 
-## XTerm
-```Xresources
-! Google Dark Theme
-! special
-*.foreground:   #c5c8c6
-*.background:   #1d1f21
-*.cursorColor:  #c5c8c6
+## Alacritty
+```yaml
+# Configuration for Alacritty, the GPU enhanced terminal emulator
+# Modified by Daniil Shilo (@daniilshilo_developer) <daniilshilo.developer@gmail.com>
 
-! black
-*.color0:       #1d1f21
-*.color8:       #969896
+window:
 
-! red
-*.color1:       #cc342b
-*.color9:       #cc342b
+  # Window dimensions (changes require restart)
+  dimensions:
+    columns: 100
+    lines: 85
 
-! green
-*.color2:       #198844
-*.color10:      #198844
+  # Window padding (changes require restart)
+  padding:
+    x: 0
+    y: 0
 
-! yellow
-*.color3:       #fba922
-*.color11:      #fba922
+  # Spread additional padding evenly around the terminal content.
+  dynamic_padding: false
 
-! blue
-*.color4:       #3971ed
-*.color12:      #3971ed
+  # Window decorations
+  decorations: none
 
-! magenta
-*.color5:       #a36ac7
-*.color13:      #a36ac7
+  # Startup Mode (changes require restart)
+  startup_mode: Fullscreen
 
-! cyan
-*.color6:       #3971ed
-*.color14:      #3971ed
+scrolling:
+  history: 0
+  multiplier: 3
 
-! white
-*.color7:       #c5c8c6
-*.color15:      #ffffff
+# Font configuration (changes require restart)
+font:
+  normal:
+    family: "Jetbrains Mono"
+    style: Regular
 
-! Поддержка 256-цветов
-XTerm.termName: xterm-256color
+  bold:
+    family: "Jetbrains Mono"
+    style: Bold
 
-! UTF-8
-XTerm.vt100.locale: false
-XTerm.vt100.utf8: true
+  italic:
+    family: "Jetbrains Mono"
+    style: "Light"
 
-! Alt ведёт себя как в других терминалах
-XTerm.vt100.metaSendsEscape: true
+  size: 12.0
 
-! Backspace ведёт себя как в других терминалах
-XTerm.vt100.backarrowKey: false
-XTerm.ttyModes: erase ^?
+  offset:
+    x: 0
+    y: 0
 
-! Копирование и вставка как в других терминалах
-Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
-Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+  glyph_offset:
+    x: 0
+    y: 0
 
-! Сохранение истории для скролла
-XTerm.vt100.saveLines: 16784
+draw_bold_text_with_bright_colors: true
+custom_cursor_colors: true
 
-! Скрывается скроллбар
-XTerm.vt100.scrollBar: false
-XTerm.vt100.scrollbar.width: 0
+# Visual Bell
+bell:
+  animation: EaseOutSine
+  color: '0xffffff'
+  duration: 5000
 
-! Установка шрифтов
-xterm*faceName: SF Mono
-xterm*faceSize: 11
+# Background opacity
+background_opacity: 1.0
 
-! Копирование при выделении текста
-XTerm*selectToClipboard: true
+# Key bindings
+key_bindings:
+  - { key: V,        mods: Command,       action: Paste                        }
+  - { key: C,        mods: Command,       action: Copy                         }
+  - { key: Q,        mods: Command,       action: Quit                         }
+  - { key: N,        mods: Command,       action: SpawnNewInstance             }
+  - { key: Return,   mods: Command,       action: ToggleFullscreen             }
+
+  - { key: Home,                          chars: "\x1bOH",   mode: AppCursor   }
+  - { key: Home,                          chars: "\x1b[H",   mode: ~AppCursor  }
+  - { key: End,                           chars: "\x1bOF",   mode: AppCursor   }
+  - { key: End,                           chars: "\x1b[F",   mode: ~AppCursor  }
+  - { key: Equals,   mods: Command,       action: IncreaseFontSize             }
+  - { key: Minus,    mods: Command,       action: DecreaseFontSize             }
+  - { key: Minus,    mods: Command|Shift, action: ResetFontSize                }
+  - { key: PageUp,   mods: Shift,         chars: "\x1b[5;2~"                   }
+  - { key: PageUp,   mods: Control,       chars: "\x1b[5;5~"                   }
+  - { key: PageUp,                        chars: "\x1b[5~"                     }
+  - { key: PageDown, mods: Shift,         chars: "\x1b[6;2~"                   }
+  - { key: PageDown, mods: Control,       chars: "\x1b[6;5~"                   }
+  - { key: PageDown,                      chars: "\x1b[6~"                     }
+  - { key: Left,     mods: Shift,         chars: "\x1b[1;2D"                   }
+  - { key: Left,     mods: Control,       chars: "\x1b[1;5D"                   }
+  - { key: Left,     mods: Alt,           chars: "\x1b[1;3D"                   }
+  - { key: Left,                          chars: "\x1b[D",   mode: ~AppCursor  }
+  - { key: Left,                          chars: "\x1bOD",   mode: AppCursor   }
+  - { key: Right,    mods: Shift,         chars: "\x1b[1;2C"                   }
+  - { key: Right,    mods: Control,       chars: "\x1b[1;5C"                   }
+  - { key: Right,    mods: Alt,           chars: "\x1b[1;3C"                   }
+  - { key: Right,                         chars: "\x1b[C",   mode: ~AppCursor  }
+  - { key: Right,                         chars: "\x1bOC",   mode: AppCursor   }
+  - { key: Up,       mods: Shift,         chars: "\x1b[1;2A"                   }
+  - { key: Up,       mods: Control,       chars: "\x1b[1;5A"                   }
+  - { key: Up,       mods: Alt,           chars: "\x1b[1;3A"                   }
+  - { key: Up,                            chars: "\x1b[A",   mode: ~AppCursor  }
+  - { key: Up,                            chars: "\x1bOA",   mode: AppCursor   }
+  - { key: Down,     mods: Shift,         chars: "\x1b[1;2B"                   }
+  - { key: Down,     mods: Control,       chars: "\x1b[1;5B"                   }
+  - { key: Down,     mods: Alt,           chars: "\x1b[1;3B"                   }
+  - { key: Down,                          chars: "\x1b[B",   mode: ~AppCursor  }
+  - { key: Down,                          chars: "\x1bOB",   mode: AppCursor   }
+  - { key: Tab,      mods: Shift,         chars: "\x1b[Z"                      }
+  - { key: F1,                            chars: "\x1bOP"                      }
+  - { key: F2,                            chars: "\x1bOQ"                      }
+  - { key: F3,                            chars: "\x1bOR"                      }
+  - { key: F4,                            chars: "\x1bOS"                      }
+  - { key: F5,                            chars: "\x1b[15~"                    }
+  - { key: F6,                            chars: "\x1b[17~"                    }
+  - { key: F7,                            chars: "\x1b[18~"                    }
+  - { key: F8,                            chars: "\x1b[19~"                    }
+  - { key: F9,                            chars: "\x1b[20~"                    }
+  - { key: F10,                           chars: "\x1b[21~"                    }
+  - { key: F11,                           chars: "\x1b[23~"                    }
+  - { key: F12,                           chars: "\x1b[24~"                    }
+  - { key: Back,                          chars: "\x7f"                        }
+  - { key: Back,     mods: Alt,           chars: "\x1b\x7f"                    }
+  - { key: Insert,                        chars: "\x1b[2~"                     }
+  - { key: Delete,                        chars: "\x1b[3~"                     }
+
+    # shortcuts for tmux. the leader key is control-b (0x02)
+  - { key: W,        mods: Command,       chars: "\x02&"                       }  # close tab (kill)
+  - { key: T,        mods: Command,       chars: "\x02c"                       }  # new tab
+  - { key: RBracket, mods: Command|Shift, chars: "\x02n"                       }  # select next tab
+  - { key: LBracket, mods: Command|Shift, chars: "\x02p"                       }  # select previous tab
+  - { key: RBracket, mods: Command,       chars: "\x02o"                       }  # select next pane
+  - { key: LBracket, mods: Command,       chars: "\x02;"                       }  # select last (previously used) pane
+  - { key: F,        mods: Command,       chars: "\x02/"                       }  # search (upwards) (see tmux.conf)
+
+mouse:
+  # Click settings
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+
+  # If this is `true`, the cursor is temporarily hidden when typing.
+  hide_when_typing: true
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+  save_to_clipboard: true
+
+# Mouse bindings
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
+
+cursor:
+  style: Block
+  unfocused_hollow: true
+
+# Live config reload (changes require restart)
+live_config_reload: true
+
+debug:
+  # Should display the render timer
+  render_timer: false
+
+  # Keep the log file after quitting Alacritty.
+  persistent_logging: false
+
+  # Log level
+  log_level: OFF
+
+  # Print all received window events.
+  print_events: false
+
+  # Record all characters and escape sequences as test data.
+  ref_test: false
+
+# Colors (Tender)
+colors:
+  # Default colors
+  primary:
+    background: '0x282828'
+    foreground: '0xeeeeee'
+
+  # Normal colors
+  normal:
+    black:   '0x282828'
+    red:     '0xf43753'
+    green:   '0xc9d05c'
+    yellow:  '0xffc24b'
+    blue:    '0xb3deef'
+    magenta: '0xd3b987'
+    cyan:    '0x73cef4'
+    white:   '0xeeeeee'
+
+  # Bright colors
+  bright:
+    black:   '0x4c4c4c'
+    red:     '0xf43753'
+    green:   '0xc9d05c'
+    yellow:  '0xffc24b'
+    blue:    '0xb3deef'
+    magenta: '0xd3b987'
+    cyan:    '0x73cef4'
+    white:   '0xfeffff'
+
+# vim: nospell
 ```
 
 ## Zsh
