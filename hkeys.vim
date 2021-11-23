@@ -11,13 +11,19 @@ nnoremap <leader>tt :tabnew<CR>
 nnoremap <leader>tw :tabclose<CR>
 
 " [Grepper] Поиск по файлам
-nnoremap <leader>g :Grepper -tool rg<CR>
+nnoremap <leader>g :Grepper<CR>
 
 " [CtrlP] Показать проводник
 nnoremap <leader>p :CtrlP<CR>
 
 " [CtrlP] Показать недавние файлы
 nnoremap <leader>r :CtrlPMRUFiles<CR>
+
+" [CtrlP] Показать буфферы
+nnoremap <leader>q :CtrlPBuffer<CR>
+
+" [Startify] Открыть Startify в новом табе
+nnoremap <leader>y :tabnew<CR>:Startify<CR>
 
 " [coc] Показать проблемы в файле
 nnoremap <silent><nowait> <leader>a  :<C-u>CocList diagnostics<cr>
