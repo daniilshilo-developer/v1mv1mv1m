@@ -4,6 +4,9 @@
     <img src="https://github.com/daniilshilo-developer/vimvimvim/blob/master/assets/screen.png?raw=true" alt="Logo"/>
 </p>
 
+# Deprecated
+> Я более не пользуюсь данной конфигурацией. Актуальная конфигурация - https://github.com/daniilshilo-developer/lim
+
 Данный репозиторий предназначен для моей конфигурации NeoVim, которую я писал и улучшал годы используя данный редактор.
 
 ![work](https://github.com/daniilshilo-developer/vimvimvim/blob/master/assets/screens/workflow.gif?raw=true)
